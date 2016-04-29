@@ -10,13 +10,13 @@ RUN bash -c 'chmod -R g+w /home/ubuntu/{workspace,sessions} && \
 #   http://docs.travis-ci.com/user/ci-environment/#Extensions
 #   https://devcenter.heroku.com/articles/php-support
 # Xdebug, most recent PECL version
-ADD ./files/etc/php5 /etc/php5
-RUN apt-get install -y php5 php5-cli php5-fpm \
-        php5-curl php5-gd php5-json php5-pgsql php5-readline php5-sqlite \
-        php5-tidy php5-xmlrpc php5-xsl php5-intl php5-mcrypt php5-mysqlnd \
+ADD ./files/etc/php7 /etc/php7
+RUN apt-get install -y php5 php7-cli php5-fpm \
+        php7-curl php7-gd php7-json php7-pgsql php7-readline php7-sqlite \
+        php7-tidy php7-xmlrpc php7-xsl php7-intl php7-mcrypt php7-mysqlnd \
         php-pear \
-    && apt-get install -y php5-dev \
+    && apt-get install -y php7-dev \
         && pecl install xdebug \
-        && php5enmod xdebug \
-    && cd /etc/php5/mods-available && ls *.ini | sed 's/\.ini$//' | xargs php5enmod
+        && php7enmod xdebug \
+    && cd /etc/php7/mods-available && ls *.ini | sed 's/\.ini$//' | xargs php7enmod
 RUN chown -R ubuntu: /home/ubuntu/lib
